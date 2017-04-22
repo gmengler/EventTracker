@@ -10,5 +10,6 @@ public interface MilesDAO {
 	public Miles create(Miles miles);
 	public Miles update(int id, Miles miles);
 	public boolean destroy(int id);
-	public int totalMileage(int start, int end);
+//	public int calcTripMileage(int start, int end);
+//	public int calcTotalMileage(int tripMileage);
 }

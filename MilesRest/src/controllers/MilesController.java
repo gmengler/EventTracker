@@ -1,12 +1,20 @@
 package controllers;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import data.MilesDAO;
 import entities.Miles;
@@ -35,9 +43,45 @@ public class MilesController {
 		return milesDao.show(id);
 	}
 	
+	// WORKING
+	@RequestMapping(path = "miles", method = RequestMethod.POST)
+	public Miles create(@RequestBody String jsonMiles, HttpServletResponse res) {
+		res.setStatus(201);
+		
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			Miles newMiles = mapper.readValue(jsonMiles, Miles.class);
+			return milesDao.create(newMiles);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		return null;
+	}
 	
-	@RequestMapping(path = "miles". method = RequestMethod.POST)
-	public Miles create(@RequestBody String)
+	// WORKING
+	@RequestMapping(path = "miles/{id}", method = RequestMethod.PUT)
+	public Miles update(@PathVariable int id, @RequestBody String jsonMiles, HttpServletResponse res) {
+		res.setStatus(202);
+		
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			Miles newMiles = mapper.readValue(jsonMiles, Miles.class);
+			return milesDao.update(id, newMiles);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		return null;
+	}
 	
-	
+//	*** CALCULATIONS WILL BE DONE ON FRONT END ***
+//	@RequestMapping(path = "miles", method = RequestMethod.GET)
+//	public int tripMileage(@PathVariable int startMiles, @PathVariable int endMiles) {
+//		return milesDao.calcTripMileage(startMiles, endMiles);
+//	}
+//
+//	
+//	@RequestMapping(path = "miles", method = RequestMethod.GET)
+//	public int totalMileage(@PathVariable int tripMileage) {
+//		return milesDao.calcTotalMileage(tripMileage);
+//	}
 }

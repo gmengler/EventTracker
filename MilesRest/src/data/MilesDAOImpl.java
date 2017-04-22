@@ -54,11 +54,19 @@ public class MilesDAOImpl implements MilesDAO {
 		}
 	}
 
-	@Override
-	public int totalMileage(int start, int end) {
-		int total = 0;
-		total = end - start;
-		return total;
-	}
+//	*** CALCULATIONS WILL BE DONE ON FRONT END ***
+//	@Override
+//	public int calcTripMileage(int start, int end) {
+//		int total = 0;
+//		total = end - start;
+//		return total;
+//	}
+//
+//	@Override
+//	public int calcTotalMileage(int tripMileage) {
+//		int total = 0;
+//		total += tripMileage;
+//		return total;
+//	}
 
 }
