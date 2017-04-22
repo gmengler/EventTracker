@@ -73,6 +73,11 @@ public class MilesController {
 		return null;
 	}
 	
+	@RequestMapping(path = "miles/{id}", method = RequestMethod.DELETE)
+	public boolean destroy(@PathVariable int id) {
+		return milesDao.destroy(id);
+	}
+	
 //	*** CALCULATIONS WILL BE DONE ON FRONT END ***
 //	@RequestMapping(path = "miles", method = RequestMethod.GET)
 //	public int tripMileage(@PathVariable int startMiles, @PathVariable int endMiles) {
