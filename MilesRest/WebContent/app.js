@@ -22,6 +22,9 @@ var AjaxRequest = function() {
 }
 
 var buildMilesTable = function(data) {
+  var $h2 = $('<h2>');
+  $h2.attr('id', 'h2');
+  $h2.text('Personal Mileage Tracker');
   var $table = $('<table>');
   $table.attr('id', 'milestable');
   var $thead = $('<thead>');
@@ -31,25 +34,30 @@ var buildMilesTable = function(data) {
   var $th2 = $('<th>');
   var $th3 = $('<th>');
   var $th4 = $('<th>');
+  var $th5 = $('<th>');
   var $totaltr = $('<tr>');
   var $totaltd1 = $('<td>');
   var $totaltd2 = $('<td>');
   var $totaltd3 = $('<td>');
+  $totaltd3.addClass('milestd');
   var $totaltd4 = $('<td>');
   var $avgtr = $('<tr>');
   var $avgtd1 = $('<td>');
   var $avgtd2 = $('<td>');
   var $avgtd3 = $('<td>');
+  $avgtd3.addClass('milestd');
   var $avgtd4 = $('<td>');
-  var $createButton = $('<button>Create</button>');
-  $createButton.attr('id', 'create');
+  var $createButton = $('<button>Create Trip!</button>');
+  $createButton.attr('id', 'createbutton');
+  $createButton.addClass('tablebutton');
 
   $th1.text('Date');
   $th2.text('Odom Start');
   $th3.text('Odom End');
   $th4.text('Total trip miles');
+  $th5.text('Actions')
 
-  $thtr.append($th1, $th2, $th3, $th4);
+  $thtr.append($th1, $th2, $th3, $th4, $th5);
   $thead.append($thtr);
   $table.append($thead);
 
@@ -60,14 +68,19 @@ var buildMilesTable = function(data) {
 // DISPLAYS LIST
   data.forEach(function(v){
     var $tbtr = $('<tr>');
+    $tbtr.addClass('bodytr')
     var $td1 = $('<td>');
     var $td2 = $('<td>');
     var $td3 = $('<td>');
     var $td4 = $('<td>');
     var $editButton = $('<button>Edit</button>');
     $editButton.attr('name', v.id);
+    $editButton.attr('id', 'editbutton');
+    $editButton.addClass('tablebutton');
     var $deleteButton = $('<button>Delete</button>');
     $deleteButton.attr('name', v.id);
+    $deleteButton.addClass('tablebutton');
+    $deleteButton.attr('id', 'delete');
 
     var tripTotal = 0;
     count++;
@@ -85,6 +98,7 @@ var buildMilesTable = function(data) {
 
     $editButton.click(function(e){
       $table.hide();
+      $('#h2').hide();
       editEntry(v.id, v);
     });
 
@@ -98,22 +112,25 @@ var buildMilesTable = function(data) {
   });
 
   $createButton.click(function(){
-    $table.hide();
+    // $table.hide();
+    // $('#h2').hide();
     createEntry();
   });
 
   avgMiles = totalMiles / count;
-  var rounded = avgMiles.toFixed(2);
+  var rounded = avgMiles.toFixed(1);
 
   $totaltd3.text('Total Miles');
   $totaltd4.text(totalMiles);
+  $totaltd4.addClass('total');
   $avgtd3.text('Average Miles');
   $avgtd4.text(rounded);
+  $avgtd4.addClass('total');
   $totaltr.append($totaltd1, $totaltd2, $totaltd3, $totaltd4, $createButton);
   $avgtr.append($avgtd1, $avgtd2, $avgtd3, $avgtd4);
   $tbody.append($totaltr, $avgtr);
   $table.append($tbody);
-  $('body').append($table);
+  $('body').append($h2, $table);
 }
 
 var editEntry = function(id, data) {
@@ -121,7 +138,7 @@ var editEntry = function(id, data) {
   $form.attr('id', 'edit')
   var $input1 = $('<input>');
   $input1.attr('value', data.date);
-  $input1.attr('type', 'text');
+  $input1.attr("type", "date");
   $input1.attr('name', 'entryDate');
   var $input2 = $('<input>');
   $input2.attr('value', data.startMiles);
@@ -157,6 +174,7 @@ var editEntry = function(id, data) {
       console.log('GREAT SUCCESS EDIT');
       console.log('Edit returned: ' + data);
       (edit).remove();
+      $('#h2').remove();
       $('#edit').remove();
       $('#milestable').remove();
       AjaxRequest();
@@ -170,11 +188,13 @@ var editEntry = function(id, data) {
 }
 
 var createEntry = function() {
+  var $div = $('<div>');
+  $div.attr('id', 'creatediv');
   var $form = $('<form name="create">');
-  $form.attr('id', 'create')
+  $form.attr('id', 'createform')
   var $input1 = $('<input>');
   $input1.attr('placeholder', 'Date');
-  $input1.attr('type', 'text');
+  $input1.attr("type", "date");
   $input1.attr('name', 'date');
   var $input2 = $('<input>');
   $input2.attr('placeholder', 'Starting Odometer');
@@ -185,9 +205,11 @@ var createEntry = function() {
   $input3.attr('type', 'text');
   $input3.attr('name', 'endMiles');
   var $button = $('<button>Submit</button>');
+  $button.attr('id', 'submitcreate');
 
   $form.append($input1, $input2, $input3, $button);
-  $('body').prepend($form);
+  $div.append($form);
+  $('body').append($div);
 
   $button.click(function(e) {
     e.preventDefault();
@@ -209,6 +231,7 @@ var createEntry = function() {
     req.done(function(data, status) {
       console.log('GREAT SUCCESS CREATE');
       $(create).remove();
+      $('#h2').remove();
       $('#milestable').remove();
       AjaxRequest();
     });

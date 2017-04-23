@@ -1,0 +1,94 @@
+.bodytr:nth-child(odd) {
+  background-color: #bebbbb
+}
+
+th {
+  background-color: #4c8baf;
+  color: white;
+}
+
+th, td {
+  padding: 15px;
+}
+
+h2 {
+  text-align: center;
+}
+
+.bodytr {
+  text-align: center;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.total {
+  text-align: center;
+}
+
+#create {
+  /*text-align: center;*/
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.milestd {
+  font-weight: bold;
+}
+
+.tablebutton {
+  color: white;
+  border: none;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: grab;
+  border-radius: 10px;
+}
+
+#editbutton {
+  background-color: rgb(236, 199, 4);
+}
+
+#delete {
+  background-color: rgb(255, 0, 0);
+}
+
+#createbutton {
+  height: 100%;
+  width: 100%;
+  background-color: rgb(0, 189, 19);
+}
+
+#creatediv {
+  display: block;
+  text-align: center;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+input[type=text], select {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=date], select {
+  width: 25%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
