@@ -89,8 +89,8 @@ var buildMilesTable = function(data) {
     totalMiles = totalMiles + tripTotal;
 
     $td1.text(v.date);
-    $td2.text(v.startMiles);
-    $td3.text(v.endMiles);
+    $td2.text(v.startMiles.toLocaleString());
+    $td3.text(v.endMiles.toLocaleString());
     $td4.text(tripTotal.toLocaleString());
 
     $tbtr.append($td1, $td2, $td3, $td4, $editButton, $deleteButton);

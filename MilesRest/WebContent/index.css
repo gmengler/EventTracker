@@ -76,7 +76,7 @@ table {
 input[type=text], select {
   width: 50%;
   padding: 12px 20px;
-  margin: 8px 0;
+  margin : 0 auto;
   display: block;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -86,7 +86,7 @@ input[type=text], select {
 input[type=date], select {
   width: 25%;
   padding: 12px 20px;
-  margin: 8px 0;
+  margin : 0 auto;
   display: block;
   border: 1px solid #ccc;
   border-radius: 4px;
