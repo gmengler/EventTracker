@@ -91,7 +91,7 @@ var buildMilesTable = function(data) {
     $td1.text(v.date);
     $td2.text(v.startMiles);
     $td3.text(v.endMiles);
-    $td4.text(tripTotal);
+    $td4.text(tripTotal.toLocaleString());
 
     $tbtr.append($td1, $td2, $td3, $td4, $editButton, $deleteButton);
     $tbody.append($tbtr);
@@ -118,13 +118,12 @@ var buildMilesTable = function(data) {
   });
 
   avgMiles = totalMiles / count;
-  var rounded = avgMiles.toFixed(1);
 
   $totaltd3.text('Total Miles');
-  $totaltd4.text(totalMiles);
+  $totaltd4.text(totalMiles.toLocaleString());
   $totaltd4.addClass('total');
   $avgtd3.text('Average Miles');
-  $avgtd4.text(rounded);
+  $avgtd4.text(avgMiles.toFixed(1));
   $avgtd4.addClass('total');
   $totaltr.append($totaltd1, $totaltd2, $totaltd3, $totaltd4, $createButton);
   $avgtr.append($avgtd1, $avgtd2, $avgtd3, $avgtd4);
