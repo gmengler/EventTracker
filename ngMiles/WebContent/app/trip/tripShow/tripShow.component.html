@@ -8,9 +8,9 @@
 </div>
 
 <form ng-show="vm.editMode">
-	<input type="text" ng-model="vm.trip.date"/>
-	<input type="text" ng-model="vm.trip.startMiles"/>
-	<input type="text" ng-model="vm.trip.endMiles"/>
+	<input type="text" ng-model="vm.editTrip.date"/>
+	<input type="text" ng-model="vm.editTrip.startMiles"/>
+	<input type="text" ng-model="vm.editTrip.endMiles"/>
 	<button ng-click="vm.save()">Save Changes</button>
 	<button ng-click="vm.editMode = false; vm.editTrip = null">Cancel</button>
 </form>

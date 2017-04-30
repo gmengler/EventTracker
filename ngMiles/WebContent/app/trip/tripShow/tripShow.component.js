@@ -15,7 +15,9 @@ angular.module('trip')
 
 			vm.save = function() {
 				console.log(vm.trip);
-				vm.onUpdate({trip : vm.editTrip})
+				vm.onUpdate({trip : vm.editTrip}).then(function(res) {
+					vm.trip = res.data;
+				})
 				vm.editTrip = null;
 				vm.editMode = false;
 			}
