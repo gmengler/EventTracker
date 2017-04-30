@@ -1,0 +1,42 @@
+<table ng-show="vm.showTable">
+	<thead>
+		<th>Date</th>
+		<th>Odom Start</th>
+		<th>Odom End</th>
+		<th>Total Trip Miles</th>
+		<th>Actions</th>
+	</thead>
+	<tbody>
+		<tr ng-repeat="t in vm.trips | orderBy: 'date'">
+			<td>{{t.date | date: "MM-dd-yyyy"}}</td>
+			<td>{{t.startMiles}}</td>
+			<td>{{t.endMiles}}</td>
+			<td>{{vm.getTripTotal(t.startMiles, t.endMiles)}}</td>
+			<td><button ng-click="vm.displayTrip(t)">Select</button>
+			<button ng-click="vm.deleteTrip(t.id)">Delete</button><td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td>Total Miles: </td>
+			<td>{{vm.getTotal()}}</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td>Average Miles: </td>
+			<td>{{vm.getAverage()}}</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+<form ng-show="vm.showTable">
+	<input type="date" placeholder="Date" ng-model="trip.date"/>
+	<input type="text" placeholder="Starting miles" ng-model="trip.startMiles"/>
+	<input type="text" placeholder="Ending miles" ng-model="trip.endMiles"/>
+	<input type="submit" value="Submit" ng-click="vm.submittrip(trip); trip = {};"/>
+</form>
+
+<trip-show trip="vm.selected" ng-show="vm.selected" go-back="vm.displayTable()" on-update="vm.update(trip)"></trip-show>

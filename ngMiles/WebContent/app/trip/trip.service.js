@@ -2,7 +2,7 @@ angular.module('trip')
 	.factory('tripService', function($http) {
 		var service = {};
 		
-		var BASE_URL = 'http://localhost:8080/ngMiles/rest/miles/';
+		var BASE_URL = 'http://localhost:8080/MilesRest/rest/miles/';
 		
 		service.index = function() {
 			return $http({
@@ -12,8 +12,6 @@ angular.module('trip')
 		}
 		
 		service.create = function(trip) {
-			trip.completed = false;
-			
 			return $http({
 				method : 'POST',
 				url : BASE_URL,

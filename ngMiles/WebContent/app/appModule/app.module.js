@@ -1,1 +1,1 @@
-angular.module('appModule', ['trip'])
+angular.module('appModule', ['trip']);
