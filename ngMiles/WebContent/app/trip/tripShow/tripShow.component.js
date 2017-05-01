@@ -21,6 +21,12 @@ angular.module('trip')
 				vm.editTrip = null;
 				vm.editMode = false;
 			}
+			
+			vm.getTripTotal = function(startMiles, endMiles) {
+				var tripTotal = 0;
+				tripTotal = endMiles - startMiles;
+				return tripTotal;
+			}
 		},
 		
 		controllerAs : 'vm',
