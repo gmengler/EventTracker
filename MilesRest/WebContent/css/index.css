@@ -1,0 +1,41 @@
+#title {
+  margin-bottom: 30px;
+  margin-top: 30px;
+  font-family: 'Roboto', sans-serif;
+}
+
+#createForm {
+  margin-bottom: 40px;
+}
+
+#theader {
+  background-color: rgb(79, 155, 187);
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
+
+.table tbody>tr>td.vert-align{
+    vertical-align: middle;
+    font-family: 'Roboto', sans-serif;
+}
+
+#stats, h3, #singleTrip, #editTrip {
+  font-family: 'Roboto', sans-serif;
+}
+
+.list-group, .panel-body {
+  font-size: 1.25em;
+}
+
+.panel-body {
+  font-size: 1.5em;
+}
+
+.panel-heading {
+  font-size: 2em;
+}
+
+#singleTrip, #editTrip {
+  text-align: center;
+  margin-top: 65px;
+}

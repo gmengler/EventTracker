@@ -2,7 +2,7 @@ angular.module('trip')
 	.factory('tripService', function($http) {
 		var service = {};
 		
-		var BASE_URL = '/MilesRest/rest/miles/';
+		var BASE_URL = 'rest/miles/';
 		
 		service.index = function() {
 			return $http({

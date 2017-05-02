@@ -1,0 +1,70 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-3"></div>
+		<div class="col-sm-6">
+			<div class="panel panel-default" ng-hide="vm.editMode" id="singleTrip">
+				<div class="panel-heading">Your trip from
+					<p>
+						{{vm.trip.date | date: "fullDate"}}
+					</p>
+				</div>
+				<div class="panel-body">
+					<p>
+						<strong>Starting miles: </strong>{{vm.trip.startMiles}}
+					</p>
+					<p>
+						<strong>Ending miles: </strong>{{vm.trip.endMiles}}
+					</p>
+					<p>
+						<strong>Total trip miles: </strong>{{vm.getTripTotal(vm.trip.startMiles, vm.trip.endMiles)}}
+					</p>
+					<button ng-click="vm.goBack()" class="btn btn-primary">Back to List</button>
+					<button ng-click="vm.editMode = true; vm.setEditTrip()" class="btn btn-warning">Edit</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3"></div>
+	</div>
+
+
+	<div class="row">
+		<div class="col-sm-3"></div>
+		<div class="col-sm-6">
+			<div class="panel panel-default" id="editTrip" ng-show="vm.editMode">
+				<div class="panel-heading">Edit Your Trip</div>
+				<div class="panel-body">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label class="control-label col-sm-5" for="date">Date:</label>
+							<div class="col-sm-7">
+								<input type="text" class="form-control" id="date" ng-model="vm.editTrip.date">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-5" for="startMiles">Starting miles:</label>
+							<div class="col-sm-7">
+								<input type="text" class="form-control" id="startMiles" ng-model="vm.editTrip.startMiles">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-5" for="startMiles">Ending miles:</label>
+							<div class="col-sm-7">
+								<input type="text" class="form-control" id="endMiles" ng-model="vm.editTrip.endMiles">
+							</div>
+						</div>
+						<!-- <input type="text" ng-model="vm.editTrip.date" />
+				<input type="text" ng-model="vm.editTrip.startMiles" />
+				<input type="text" ng-model="vm.editTrip.endMiles" /> -->
+						<button ng-click="vm.save()" class="btn btn-success">Save Changes</button>
+						<button ng-click="vm.editMode = false; vm.editTrip = null" class="btn btn-danger">Cancel</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3"></div>
+
+	</div>
+
+
+
+</div>
